@@ -2,9 +2,11 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#14161C">
     <title>SYMatic | Digital Solutions</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -13,12 +15,13 @@
 <div class="loader">
   <div class="loader-inner">
     <div class="loader-logo"><img src="symatic-logo.png" alt="SYMatic" class="loader-logo-img"></div>
-    <div class="loader-bar"><div class="loader-fill"></div></div>
+    <div class="loader-plot"></div>
+    <span class="loader-caption">Plotting interface</span>
   </div>
 </div>
 
-<div class="cur-dot" id="curDot"></div>
-<div class="cur-ring" id="curRing"></div>
+<div class="cur-dot" id="curDot" aria-hidden="true"></div>
+<div class="cur-ring" id="curRing" aria-hidden="true"></div>
 
 <!-- NAVIGATION -->
 <nav id="mainNav">
@@ -31,9 +34,9 @@
       <a href="#projects">Work</a>
       <a href="#process">Process</a>
       <a href="#team">Team</a>
-      <a href="#contact" class="btn-primary">Get in Touch</a>
+      <a href="#contact" class="btn-primary">Start a project</a>
     </div>
-    <button class="burger" onclick="openMobile()">
+    <button class="burger" onclick="openMobile()" aria-label="Open menu">
       <div></div><div></div><div></div>
     </button>
   </div>
@@ -41,50 +44,62 @@
 
 <!-- MOBILE MENU -->
 <div class="mobile-menu" id="mobileMenu">
-  <button class="close-btn" onclick="closeMobile()">✕</button>
+  <button class="close-btn" onclick="closeMobile()" aria-label="Close menu">✕</button>
   <img src="symatic-logo.png" alt="SYMatic" class="mobile-logo-img">
   <a href="#services" onclick="closeMobile()">Services</a>
   <a href="#projects" onclick="closeMobile()">Work</a>
   <a href="#process" onclick="closeMobile()">Process</a>
   <a href="#team" onclick="closeMobile()">Team</a>
-  <a href="#contact" class="btn-primary" onclick="closeMobile()">Get in Touch</a>
+  <a href="#contact" class="btn-primary" onclick="closeMobile()">Start a project</a>
 </div>
 
 <!-- HERO SECTION -->
 <section class="hero">
-  <div class="hero-banner-bg"></div>
+  <span class="reg-mark reg-tl" aria-hidden="true"></span>
+  <span class="reg-mark reg-tr" aria-hidden="true"></span>
+  <span class="reg-mark reg-bl" aria-hidden="true"></span>
+  <span class="reg-mark reg-br" aria-hidden="true"></span>
+
   <div class="hero-content">
-    <h1 class="hero-title">Crafting Next-Gen <span class="text-gradient">Digital Experiences</span></h1>
-    <p class="hero-subtitle">We transform bold ideas into high-performance web solutions, seamless software architectures, and premium designs.</p>
+    <span class="hero-status"><span class="dot"></span>Systems online</span>
+    <h1 class="hero-title">We build the digital <span class="text-gradient">systems</span> your business runs on.</h1>
+    <p class="hero-subtitle">SYMatic designs and engineers websites, software, and interfaces — built with the same precision as the systems they power.</p>
     <div class="hero-btns">
-      <a href="#projects" class="btn-primary">View Our Work</a>
-      <a href="#contact" class="btn-outline">Discuss Project</a>
+      <a href="#projects" class="btn-primary">View the build log</a>
+      <a href="#contact" class="btn-outline">Start a project</a>
     </div>
+    <span class="hero-coords">COLOMBO, LK · 06.9271° N, 79.8612° E</span>
   </div>
 </section>
 
 <!-- SERVICES SECTION -->
 <section id="services" class="services">
   <div class="container">
-    <div class="section-header">
+    <div class="section-header reveal">
       <span class="sect-tag">Capabilities</span>
-      <h2>Our Core Expertise</h2>
+      <h2>What we build</h2>
     </div>
     <div class="services-grid">
-      <div class="svc-card">
-        <div class="svc-icon">🌐</div>
+      <div class="svc-card reveal" data-code="SVC.WEB">
+        <div class="svc-icon">
+          <svg viewBox="0 0 40 40"><circle cx="20" cy="20" r="16"/><path d="M4 20h32M20 4c4.5 4.4 7 10 7 16s-2.5 11.6-7 16c-4.5-4.4-7-10-7-16s2.5-11.6 7-16z"/></svg>
+        </div>
         <h3>Web Development</h3>
-        <p>Custom websites, e-commerce architectures, and lightning-fast user interfaces tailored for business growth.</p>
+        <p>Custom websites and e-commerce architectures with lightning-fast, business-ready interfaces.</p>
       </div>
-      <div class="svc-card">
-        <div class="svc-icon">💻</div>
+      <div class="svc-card reveal" data-code="SVC.SFW">
+        <div class="svc-icon">
+          <svg viewBox="0 0 40 40"><rect x="5" y="7" width="30" height="22" rx="2"/><path d="M5 13h30M12 22l4 4-4 4M20 30h6"/></svg>
+        </div>
         <h3>Software Solutions</h3>
-        <p>Reliable, scalable, and tailored internal systems designed to automate workflows and optimize productivity.</p>
+        <p>Reliable, scalable internal systems designed to automate workflows and cut manual work.</p>
       </div>
-      <div class="svc-card">
-        <div class="svc-icon">✨</div>
+      <div class="svc-card reveal" data-code="SVC.UXD">
+        <div class="svc-icon">
+          <svg viewBox="0 0 40 40"><rect x="6" y="6" width="28" height="28" rx="3"/><path d="M6 15h28M14 6v28"/></svg>
+        </div>
         <h3>UI/UX & Branding</h3>
-        <p>Immersive layout structures, visual identity suites, and premium digital layouts that convert impressions into loyalty.</p>
+        <p>Layout systems and visual identities built to turn first impressions into loyal users.</p>
       </div>
     </div>
   </div>
@@ -93,49 +108,49 @@
 <!-- PROJECTS SECTION -->
 <section id="projects" class="projects">
   <div class="container">
-    <div class="section-header">
+    <div class="section-header reveal">
       <span class="sect-tag">Portfolio</span>
-      <h2>Recent Masterpieces</h2>
+      <h2>Recent builds</h2>
     </div>
 
-    <div class="project-filters">
-      <button class="pf-btn active" data-filter="all">All Projects</button>
-      <button class="pf-btn" data-filter="web">Web Applications</button>
+    <div class="project-filters reveal">
+      <button class="pf-btn active" data-filter="all">All projects</button>
+      <button class="pf-btn" data-filter="web">Web applications</button>
       <button class="pf-btn" data-filter="software">Software</button>
     </div>
 
     <div class="project-mosaic">
       <!-- Thushan Motors Web Application -->
-      <div class="pmosaic-card pmosaic-wide popup-trigger" data-cat="web" data-img="thushanmotors.jpg">
-        <div class="pmosaic-bg" style="background: url('thushanmotors.jpg') center center / cover no-repeat;"></div>
+      <div class="pmosaic-card pmosaic-wide popup-trigger reveal" data-cat="web" data-img="thushanmotors.jpg">
+        <div class="pmosaic-bg" style="background-image: url('thushanmotors.jpg');"></div>
         <div class="pmosaic-overlay"></div>
         <div class="pmosaic-content">
-          <span class="p-cat">Web Application</span>
+          <span class="p-cat">Web application</span>
           <h3>Thushan Motors</h3>
-          <p>A high-performance modern web application built for seamless automotive browsing. Click card to view image or use link below to visit live site.</p>
-          <a href="https://thushanmotors.lk" target="_blank" class="p-link-action live-site-link">Visit Website ↗</a>
+          <p>A high-performance web application built for seamless automotive browsing. Tap the card for a closer look, or visit the live site.</p>
+          <a href="https://thushanmotors.lk" target="_blank" rel="noopener" class="p-link-action live-site-link">Visit website ↗</a>
         </div>
       </div>
 
       <!-- Shop Track Inventory (Admin Panel) -->
-      <div class="pmosaic-card popup-trigger" data-cat="software" data-img="softwareadmin.jpg">
-        <div class="pmosaic-bg" style="background: url('softwareadmin.jpg') center center / cover no-repeat;"></div>
+      <div class="pmosaic-card popup-trigger reveal" data-cat="software" data-img="softwareadmin.jpg">
+        <div class="pmosaic-bg" style="background-image: url('softwareadmin.jpg');"></div>
         <div class="pmosaic-overlay"></div>
         <div class="pmosaic-content">
-          <span class="p-cat">Simple Software Solution</span>
+          <span class="p-cat">Software solution</span>
           <h3>Shop Track Inventory</h3>
-          <p>An intuitive backend administration system tailored for real-time stock tracking and business analytics.</p>
+          <p>An intuitive backend system for real-time stock tracking and business analytics.</p>
         </div>
       </div>
 
       <!-- Wedding Invitation Project -->
-      <div class="pmosaic-card popup-trigger" data-cat="web" data-img="wedding invitation.png">
-        <div class="pmosaic-bg" style="background: url('wedding invitation.png') center center / cover no-repeat;"></div>
+      <div class="pmosaic-card popup-trigger reveal" data-cat="web" data-img="wedding-invitation.png">
+        <div class="pmosaic-bg" style="background-image: url('wedding-invitation.png');"></div>
         <div class="pmosaic-overlay"></div>
         <div class="pmosaic-content">
-          <span class="p-cat">Digital Design & Layout</span>
+          <span class="p-cat">Digital design</span>
           <h3>Wedding Invitation</h3>
-          <p>A beautifully curated, responsive digital invitation concept crafted to deliver elegant, premium aesthetics.</p>
+          <p>A curated, responsive digital invitation built for an elegant, premium feel on any device.</p>
         </div>
       </div>
     </div>
@@ -144,7 +159,7 @@
 
 <!-- IMAGE POPUP MODAL (LIGHTBOX) -->
 <div class="image-popup-modal" id="imageModal">
-  <span class="modal-close">&times;</span>
+  <span class="modal-close" role="button" aria-label="Close preview">&times;</span>
   <div class="modal-container">
     <img src="" alt="Preview" id="modalImg">
   </div>
@@ -152,26 +167,26 @@
 
 <!-- PROCESS SECTION -->
 <section id="process" class="process">
-  <div class="container">
-    <div class="section-header">
+  <div class="container process-line">
+    <div class="section-header reveal">
       <span class="sect-tag">Workflow</span>
-      <h2>How We Deliver Excellence</h2>
+      <h2>How a build moves</h2>
     </div>
     <div class="process-steps">
-      <div class="p-step">
-        <div class="p-num">01</div>
+      <div class="p-step reveal">
+        <span class="p-code">PH.01 — DISCOVERY</span>
         <h4>Discovery & Strategy</h4>
-        <p>Understanding your exact objective to align business strategies with optimal frameworks.</p>
+        <p>We map your exact objective and align it with the right technical approach.</p>
       </div>
-      <div class="p-step">
-        <div class="p-num">02</div>
+      <div class="p-step reveal">
+        <span class="p-code">PH.02 — ARCHITECTURE</span>
         <h4>Design & Architecture</h4>
-        <p>Mapping out flawless client flows and solid structures before typing a single line of functional code.</p>
+        <p>Every flow and structure is mapped out before a single line of functional code.</p>
       </div>
-      <div class="p-step">
-        <div class="p-num">03</div>
+      <div class="p-step reveal">
+        <span class="p-code">PH.03 — DELIVERY</span>
         <h4>Development & Polish</h4>
-        <p>Writing robust, modular architectures backed by comprehensive aesthetic refinement cycles.</p>
+        <p>Modular, robust code, refined through rounds of aesthetic and functional review.</p>
       </div>
     </div>
   </div>
@@ -180,20 +195,22 @@
 <!-- TEAM SECTION -->
 <section id="team" class="team-section">
   <div class="container">
-    <div class="section-header">
+    <div class="section-header reveal">
       <span class="sect-tag">Mindset</span>
-      <h2>The Core Collective</h2>
+      <h2>Who's on the build</h2>
     </div>
     <div class="team-grid-v2">
-      <div class="team-card-v2">
+      <div class="team-card-v2 reveal">
         <div class="t-avatar-box">🧑‍💻</div>
         <h4>Lead Engineer</h4>
-        <p>Architecture Specialists</p>
+        <span class="t-role">Architecture specialist</span>
+        <p class="t-desc">Owns the systems underneath every build — structure, performance, and scale.</p>
       </div>
-      <div class="team-card-v2">
+      <div class="team-card-v2 reveal">
         <div class="t-avatar-box">🎨</div>
         <h4>Creative Director</h4>
-        <p>Visual Experience Designers</p>
+        <span class="t-role">Visual experience designer</span>
+        <p class="t-desc">Shapes how every interface looks, feels, and moves for the people who use it.</p>
       </div>
     </div>
   </div>
@@ -202,18 +219,18 @@
 <!-- CONTACT SECTION -->
 <section id="contact" class="contact">
   <div class="container contact-grid">
-    <div class="contact-left">
+    <div class="contact-left reveal">
       <span class="sect-tag">Inquiries</span>
-      <h2>Let's build something historic together.</h2>
+      <h2>Let's start building.</h2>
       <p>Have a complex challenge or a premium design concept? Get in touch with our team for a strategy session.</p>
       <div class="contact-cta-wrapper">
         <a href="mailto:symatic@gmail.com" class="btn-outline">
-          📧 Send Email
+          📧 Send email
         </a>
       </div>
     </div>
 
-    <div class="contact-right">
+    <div class="contact-right reveal">
       <div class="c-item-v2">
         <div class="c-icon">📧</div>
         <div>
@@ -231,14 +248,14 @@
       <div class="c-item-v2">
         <div class="c-icon">📍</div>
         <div>
-          <div class="c-info-label">Based In</div>
+          <div class="c-info-label">Based in</div>
           <div class="c-info-val">Colombo, Sri Lanka</div>
         </div>
       </div>
       <div class="c-item-v2">
         <div class="c-icon">🕐</div>
         <div>
-          <div class="c-info-label">Response Time</div>
+          <div class="c-info-label">Response time</div>
           <div class="c-info-val">Within 24 hours</div>
         </div>
       </div>
